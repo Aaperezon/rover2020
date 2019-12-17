@@ -1,11 +1,11 @@
 <?php
     $conexion = mysqli_connect('localhost','root','','rover2020');
-    
+    /*
     $_POST['str']="Esto esta en php";
     echo "<script>\n";
     echo "strPjs='".$_POST['str']."'\n";
     echo "</script>\n";
-    
+    */
 ?>
 
 <!DOCTYPE html>
