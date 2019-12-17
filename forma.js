@@ -4,13 +4,11 @@ var intX = 1800;
 var intY = 850;
 var screen;
 if (canvas.getContext){
-  alert("Hello! I am an alert box!!");
 
  // dibuja con tú código aquí
   screen = canvas.getContext('2d');
   screen.fillStyle = "#4E597B";
   screen.fillRect(0,0,intX,intY);
-  screen.alert("Hola");
   Thermometer(200,0);
   //IMUPitch(1200,0);
 

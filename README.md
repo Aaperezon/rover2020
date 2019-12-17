@@ -1,6 +1,6 @@
 TOOD´s
 
-Conexion BD con js
+Conexion php con js
 
 Imagen p/humedad
 
@@ -12,3 +12,5 @@ Imagenes
 
 Sensor de Luz
 Imagenes 
+
+
