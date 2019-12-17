@@ -7,11 +7,12 @@
 <html>
 
     <head>
-        <h1>ROVER 2020 - by AaronPerezOntiveros</h1>
-    </head>
+        <title>Telemetria 2020</title>
+        <h1>Telemetria 2020 - by Aaron Perez Ontiveros</h1>     </head>
 
     <body>
-
+        <canvas id="interface" width="1800" height="850"></canvas>
+        <script src="forma.js" ></script>
         <br><br>
         <table>
             <tr>    
