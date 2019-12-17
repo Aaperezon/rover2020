@@ -11,7 +11,7 @@ if (canvas.getContext){
   screen.fillStyle = "#4E597B";
   screen.fillRect(0,0,intX,intY);
   screen.alert("Hola");
-  //Thermometer(25,0);
+  Thermometer(200,0);
   //IMUPitch(1200,0);
 
 } else {
