@@ -9,11 +9,15 @@ if (canvas.getContext){
   screen = canvas.getContext('2d');
   screen.fillStyle = "#4E597B";
   screen.fillRect(0,0,intX,intY);
-  Thermometer(200,0);
-  //IMUPitch(1200,0);
+  Thermometer(30,10);
+  IMUPitch(1200,100);
+  IMURoll(1200,200);
+  IMUYaw(1200,300);
+
+  
 
 } else {
- alert("Su navegador no soporta canvas :O");
+ alert("Your browser doesn't support canvas.");
 }
 function Thermometer(posX, posY){
   var thermometer = new Image;
@@ -30,7 +34,7 @@ function Thermometer(posX, posY){
 function IMUPitch(posX, posY){
   var pitch = new Image;
   // var measure = 40;
-  pitch.src = 'thermometer.jpg';
+  pitch.src = 'pitch.jpg';
   pitch.onload = function(){
     screen.drawImage(pitch, posX, posY);
   }
