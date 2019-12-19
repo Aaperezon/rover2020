@@ -22,7 +22,7 @@ if (canvas.getContext){
 function Thermometer(posX, posY){
   var thermometer = new Image;
   var measure = 40;
-  thermometer.src = 'thermometer.jpg';
+  thermometer.src = './images/thermometer.jpg';
   thermometer.onload = function(){
     screen.drawImage(thermometer, posX, posY, 80, 350);
   }
@@ -34,10 +34,10 @@ function Thermometer(posX, posY){
 function IMUPitch(posX, posY){
   var pitch = new Image;
   // var measure = 40;
-  pitch.src = 'pitch.png';
+  pitch.src = './images/pitch.png';
 
   var back = new Image;
-  back.src = 'IMUBackground.png';
+  back.src = './images/IMUBackground.png';
 
   pitch.onload = function(){
     screen.drawImage(pitch, posX+10, posY+85,215,55);
@@ -48,10 +48,10 @@ function IMUPitch(posX, posY){
 function IMUYaw(posX, posY){
   var yaw = new Image;
   // var measure = 40;
-  yaw.src = 'yaw.png';
+  yaw.src = './images/yaw.png';
 
   var back = new Image;
-  back.src = 'IMUBackground.png';
+  back.src = './images/IMUBackground.png';
 
   yaw.onload = function(){
     //rotate(10 * Math.PI / 180);
@@ -63,10 +63,10 @@ function IMUYaw(posX, posY){
 function IMURoll(posX, posY){
   var roll = new Image;
   // var measure = 40;
-  roll.src = 'roll.png';
+  roll.src = './images/roll.png';
 
   var back = new Image;
-  back.src = 'IMUBackground.png';
+  back.src = './images/IMUBackground.png';
   
   roll.onload = function(){
     screen.drawImage(roll, posX+29, posY+70,180,90);
