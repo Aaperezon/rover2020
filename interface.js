@@ -9,7 +9,7 @@ if (canvas.getContext){
   screen = canvas.getContext('2d');
   screen.fillStyle = "#FFDA73";
   screen.fillRect(0,0,intX,intY);
-  Thermometer(30,10);
+  Thermometer(30,600);
   IMUPitch(800,600);
   IMUYaw(1100,600);
   IMURoll(1400,600);
@@ -24,7 +24,7 @@ function Thermometer(posX, posY){
   var measure = 40;
   thermometer.src = './images/thermometer.jpg';
   thermometer.onload = function(){
-    screen.drawImage(thermometer, posX, posY, 80, 350);
+    screen.drawImage(thermometer, posX, posY, 70, 340);
   }
   screen.lineWidth = "1";
   screen.strokeStyle = "red";
