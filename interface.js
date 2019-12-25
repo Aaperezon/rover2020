@@ -1,12 +1,3 @@
-$.ajax({
-  url : 'serv.php', // my php file
-  type : 'GET', // type of the HTTP request
-  success : function(result){ 
-     var obj = jQuery.parseJSON(result);
-     console.log(obj);
-  }
-});
-
 var canvas = document.getElementById('interface');
 
 var intX = 1800;
