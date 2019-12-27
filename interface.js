@@ -13,9 +13,7 @@ if (canvas.getContext){
   IMUPitch(800,600);
   IMUYaw(1100,600);
   IMURoll(1400,600);
- 
   
-
 } else {
  alert("Your browser doesn't support canvas.");
 }
@@ -74,3 +72,9 @@ function IMURoll(posX, posY){
 
   }
 }
+$.get("./services/read.php",function(response){ 
+  console.log(response);
+
+
+})
+
