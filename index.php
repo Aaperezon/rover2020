@@ -17,7 +17,16 @@
         <?php
             require './services/read.php';
             require './services/insert.php';
+            require './services/deleteRow.php';
         ?> 
+
+
+        <!--
+        localhost/rover/?temperature=20&humidity=30&flex_fr=30&flex_fl=30&flex_rr=30&flex_rl=30&gyro_x=30&gyro_y=30&gyro_z=30&light=40
+        
+        localhost/rover/?id=8
+        
+        -->
 
 
     </body>

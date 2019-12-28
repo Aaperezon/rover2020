@@ -15,27 +15,14 @@ if($pdo!=null){
         }
     }
     if($result==null){
-        $sql = 'INSERT INTO reading( 
-            time, 
-            temperature, 
-            humidity,
-            flex_fr, 
-            flex_fl, 
-            flex_rr, 
-            flex_rl, 
-            gyro_x, 
-            gyro_y, 
-            gyro_z,
-            light)
+        $sql = 'INSERT INTO reading( time, temperature, humidity,flex_fr, flex_fl, flex_rr, flex_rl, gyro_x, gyro_y, gyro_z,light)
         VALUES (CURRENT_TIMESTAMP,?,?,?,?,?,?,?,?,?,?)';
-
         $stmt = $pdo->prepare($sql);
         if($stmt->execute($bindings)){
             $result = "Insertion Success";
         }
         else{
             $result = "Insertion Error";
-
         }
     }
 }
