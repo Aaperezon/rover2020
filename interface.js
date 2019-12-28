@@ -1,22 +1,41 @@
 var canvas = document.getElementById('interface');
-
-var intX = 1800;
-var intY = 850;
+var intX = 1440;
+var intY = 900;
 var screen;
+var splitData;
+
+
+
+$.get("./services/read.php",function(response){ 
+  console.log(response);
+  response = JSON.parse(response);
+  response  = String(response);
+  splitData = response.split(',');
+  console.log(splitData[0]+ "<--Esta es la impresioin");
+})
+
+
+
 if (canvas.getContext){
 
  // dibuja con tú código aquí
   screen = canvas.getContext('2d');
-  screen.fillStyle = "#FFDA73";
+  screen.fillStyle = "rgba(0,255,0,0.3)";
   screen.fillRect(0,0,intX,intY);
+  screen.strokeRect(0,0,intX,intY);
   Thermometer(30,600);
   IMUPitch(800,600);
   IMUYaw(1100,600);
   IMURoll(1400,600);
+  screen.fillStyle = "#000";
+  screen.font = "50px Georgia";
+  screen.fillText("Telemetry2020 - by Aaron Perez Ontiveros",80,50);
+
   
 } else {
  alert("Your browser doesn't support canvas.");
 }
+
 function Thermometer(posX, posY){
   var thermometer = new Image;
   var measure = 40;
@@ -72,9 +91,8 @@ function IMURoll(posX, posY){
 
   }
 }
-$.get("./services/read.php",function(response){ 
-  console.log(response);
 
 
-})
+
+
 
