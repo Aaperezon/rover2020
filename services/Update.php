@@ -6,7 +6,7 @@ $existingParameters = [];
 $idBind = null;
 if($pdo!=null){
     error_log("Connection is not null");
-    $parameters = ['id','temperature', 'humidity', 'flex_fr', 'flex_fl','flex_rr','flex_rl','gyro_x','gyro_y','gyro_z', 'light'];
+    $parameters = ['temperature', 'humidity', 'flex_fr', 'flex_fl','flex_rr','flex_rl','gyro_x','gyro_y','gyro_z', 'light'];
     for($i = 0; $i < sizeof($parameters); $i++){
         if(isset($_GET[$parameters[$i]])){
             if($i == 0 && $parameters[0] = "id"){
