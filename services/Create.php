@@ -1,5 +1,5 @@
 <?php
-require "connection.php";
+require "Connection.php";
 $bindings = [];
 $result=null;
 if($pdo!=null){

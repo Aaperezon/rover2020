@@ -2,23 +2,34 @@ var canvas = document.getElementById('interface');
 var intX = 1440;
 var intY = 900;
 var screen;
-var splitData;
-
-
+var id, time, temperature, humidity, flex_fr, flex_fl, flex_rr, flex_rl, gyro_x, gyro_y, gyro_z, light;
 
 $.get("./services/read.php",function(response){ 
-  console.log(response);
+  //console.log(response);
   response = JSON.parse(response);
   response  = String(response);
-  splitData = response.split(',');
-  console.log(splitData[0]+ "<--Esta es la impresioin");
+  var splitData = response.split(',');
+  id = splitData[0];
+  time = splitData[1], 
+  temperature = splitData[2], 
+  humidity = splitData[3], 
+  flex_fr = splitData[4], 
+  flex_fl = splitData[5], 
+  flex_rr = splitData[6], 
+  flex_rl = splitData[7],
+  gyro_x = splitData[8], 
+  gyro_y = splitData[9], 
+  gyro_z = splitData[10], 
+  light = splitData[11];
+  console.log(id + " " + time + " "  + temperature + " " + humidity + " " + flex_fr + " " + flex_fl + " " + flex_rr + " " + flex_rl + " " + gyro_x + " " + gyro_y + " " + gyro_z + " " + light);
+
+  
 })
+//console.log(id + time + temperature + humidity + flex_fr + flex_fl + flex_rr + flex_rl + gyro_x + gyro_y + gyro_z + light);
 
 
 
 if (canvas.getContext){
-
- // dibuja con tú código aquí
   screen = canvas.getContext('2d');
   screen.fillStyle = "rgba(0,255,0,0.3)";
   screen.fillRect(0,0,intX,intY);
@@ -31,7 +42,6 @@ if (canvas.getContext){
   screen.font = "50px Georgia";
   screen.fillText("Telemetry2020 - by Aaron Perez Ontiveros",80,50);
 
-  
 } else {
  alert("Your browser doesn't support canvas.");
 }

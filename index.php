@@ -15,7 +15,7 @@
         <canvas id="interface" width="1900" height="900"></canvas>
         <script src="interface.js" ></script>
         <?php
-            //require './services/read.php';
+            require './services/read.php';
             //require './services/insert.php';
             //require './services/deleteRow.php';
         ?> 

@@ -1,9 +1,9 @@
 <?php
-require "connection.php";
+require "Connection.php";
 $data = [];
 if($pdo!=null){
     error_log("Connection is not null");
-    $sql = "SELECT * FROM reading ORDER BY id DESC LIMIT 50";
+    $sql = "SELECT * FROM reading ORDER BY id DESC LIMIT 1";
 	$stmt = $pdo->prepare($sql);
 	$stmt->execute();
 	while($row = $stmt->fetch(PDO::FETCH_NUM))
