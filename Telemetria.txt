@@ -1,0 +1,24 @@
+==========================
+EXTRA
+==========================
+
+Speed
+Gear
+Steering angle
+Break pressure
+
+
+
+
+==========================
+ACTUAL
+==========================
+
+Pitch
+Roll
+Yaw
+Camera
+Temperature
+Humidity
+Light sensibility 
+Flexing points
