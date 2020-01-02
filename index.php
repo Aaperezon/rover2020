@@ -3,18 +3,32 @@
 
     <head>
         <title>Telemetry 2020</title>
+        <link rel=“stylesheet” type=“text/css” href=“style.css” />
         <!--<h1>Telemetry 2020 - by Aaron Perez Ontiveros</h1>     </head>  -->
 
     <body>
-
         <script
-        src="https://code.jquery.com/jquery-3.4.1.min.js"
-        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
-        crossorigin="anonymous"></script>
-        <canvas id="interface" width="1900" height="900"></canvas>
+            src="./libs/jquery-3.4.1.min.js"
+            integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+            crossorigin="anonymous">
+        </script>
+        <script
+            src="./libs/Chart.js">
+        </script>
+
+        
+        <canvas id="interface" width="1900" height="910"></canvas>
+
+        <!--
+        <div class = "THGraph-container">
+            <canvas id="THGraph"></canvas>
+        </div>
+        -->
+
+
         <script src="interface.js" ></script>
         <?php
-            require './services/read.php';
+            //require './services/read.php';
             //require './services/insert.php';
             //require './services/deleteRow.php';
         ?> 
