@@ -79,50 +79,55 @@ function Thermometer(posX, posY){
   screen.font = "40px Arial";
   screen.fillText(temperature+"°C",posX+650,posY+80);
   screen.fillText(humidity+"%",posX+650,posY+200);
-  /*
-  Chart.defaults.global.defaultFontFamily = "Lato";
-  Chart.defaults.global.defaultFontSize = 18;
-
-
-  var dataFirst = {
-      label: "Car A - Speed (mph)",
-      data: [0, 59, 75, 20, 20, 55, 40],
-      lineTension: 0,
-      fill: false,
-      borderColor: 'red'
-    };
+  var THGraph = document.getElementById('THGraph');
   
-  var dataSecond = {
-      label: "Car B - Speed (mph)",
-      data: [20, 15, 60, 60, 65, 30, 70],
-      lineTension: 0,
-      fill: false,
-    borderColor: 'blue'
+  if (THGraph.getContext){
+    screen = canvas.getContext('2d');
+    Chart.defaults.global.defaultFontFamily = "Lato";
+    Chart.defaults.global.defaultFontSize = 18;
+    var dataFirst = {
+        label: "Car A - Speed (mph)",
+        data: [0, 59, 75, 20, 20, 55, 40],
+        lineTension: 0,
+        fill: false,
+        borderColor: 'red'
+      };
+    
+    var dataSecond = {
+        label: "Car B - Speed (mph)",
+        data: [20, 15, 60, 60, 65, 30, 70],
+        lineTension: 0,
+        fill: false,
+      borderColor: 'blue'
+      };
+    
+    var speedData = {
+      labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
+      datasets: [dataFirst, dataSecond]
     };
-  
-  var speedData = {
-    labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
-    datasets: [dataFirst, dataSecond]
-  };
-  var chartOptions = {
-    maintainAspectRation: false,
-    legend: {
-      display: true,
-      responsive: true,
-      position: 'top',
-      labels: {
-        boxWidth: 2,
-        fontColor: 'black'
+    var chartOptions = {
+      maintainAspectRation: false,
+      legend: {
+        display: true,
+        responsive: true,
+        position: 'top',
+        labels: {
+          boxWidth: 2,
+          fontColor: 'black'
+        }
       }
-    }
-  };
-  var lineChart = new Chart(canvas, {
-    type: 'line',
-    data: speedData,
-    options: chartOptions
-  });
+    };
+    var lineChart = new Chart(THGraph, {
+      type: 'line',
+      data: speedData,
+      options: chartOptions
+    });
+  }
+  else{
 
-*/
+    console.log("THGraph couldn't appear.");
+  }
+ 
 }
 function Light(posX,posY){
   BackgroundSensors(posX,posY,240,249);
@@ -141,8 +146,6 @@ function DateTime(posX,posY){
   screen.font = "25px Arial";
   screen.fillText(time,posX+450,posY+25);
 }
-
-
 function IMURoll(posX, posY){
   var roll = new Image;
   // var measure = 40;
