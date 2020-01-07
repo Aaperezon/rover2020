@@ -1,14 +1,83 @@
-.THGraphContainer{
-    position: relative;
-    max-width: 400px;
-    max-width: 400px;
-    border: 50px solid red;
-    background-color: lightblue;
-
-}
 .MainContainer{
-    position: relative;
-    max-width: 400px;
-    max-width: 400px;
+    position: absolute;
+    max-width: 1900px; 
+    max-height: 910px;
+    z-index: 0;
+   
+}
+.TemperatureGraphContainer{
+    position: absolute;
+    width: 640px;
+    height: 100px;
+    top: 380px;
+    z-index: 0;
+
 
 }
+.HumidityGraphContainer{
+    position: absolute;
+    width: 640px;
+    height: 131px;
+    top: 520px;
+    z-index: 0;
+
+
+}
+.IMUGraphContainer {
+    position: absolute;
+    top: 60px;
+    left: 770px;
+    z-index: 0;
+}
+.RollBackContainer {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 60px;
+    left: 1790px;
+    z-index: 0;
+}
+.PitchBackContainer {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 165px;
+    left: 1790px;
+    z-index: 0;
+}
+
+.YawBackContainer {
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    top: 270px;
+    left: 1790px;
+    z-index: 0;
+}
+.RollContainer {
+    position: absolute;
+    width: 80px;
+    height: 60px;
+    top: 80px;
+    left: 1804px;
+    z-index: 0;
+}
+.PitchContainer {
+    position: absolute;
+    width: 103px;
+    height: 27px;
+    top: 203px;
+    left: 1793px;
+    z-index: 0;
+}
+
+.YawContainer {
+    position: absolute;
+    width: 50px;
+    height: 90px;
+    top: 280px;
+    left: 1820px;
+    z-index: 0;
+}
+
+

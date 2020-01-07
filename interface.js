@@ -1,34 +1,60 @@
+setInterval(function(){
+  //location = ''
+  Call();
+  RefreshWindow()
+},1000)
+
 /*#######################
 Save data from server.
 #########################*/
-var id, time, temperature, humidity, flex_fr, flex_fl, flex_rr, flex_rl, gyro_x, gyro_y, gyro_z, light;
 //console.log(id + " " + time + " "  + temperature + " " + humidity + " " + flex_fr + " " + flex_fl + " " + flex_rr + " " + flex_rl + " " + gyro_x + " " + gyro_y + " " + gyro_z + " " + light);
-$.ajax({
-  type: "GET",
-  url: "./services/read.php",
-  datatype: "json",
-  async: false,
-  success: function(responseFunction){
-    responseFunction = JSON.parse(responseFunction);
-    responseFunction  = String(responseFunction);
-    var splitData = responseFunction.split(',');
-    SaveResponse(splitData);
+var e =0;
+var id = [], time= [], temperature= [], humidity= [], flex_fr= [], flex_fl= [], flex_rr= [], flex_rl= [], gyro_x= [], gyro_y= [], gyro_z= [], light= [];
+function Call(){
+  id = [], time= [], temperature= [], humidity= [], flex_fr= [], flex_fl= [], flex_rr= [], flex_rl= [], gyro_x= [], gyro_y= [], gyro_z= [], light= [];
+  $.ajax({
+    type: "GET",
+    url: "./services/read.php",
+    datatype: "json",
+    async: false,
+    success: function(responseFunction){
+      responseFunction = JSON.parse(responseFunction);
+      responseFunction  = String(responseFunction);
+      var splitData = responseFunction.split(',');
+      SaveResponse(splitData);
+    }
+  });
+}
+function SaveResponse(splitData){
+  var j=0;
+  var base = 10;
+  for(var i = 0;i<50;i++){
+    id.push(parseInt(splitData[j++],base));
+    time.push(parseInt(splitData[j++],base));
+    temperature.push(parseInt(splitData[j++],base));
+    humidity.push(parseInt(splitData[j++],base));
+    flex_fr.push(parseInt(splitData[j++],base));
+    flex_fl.push(parseInt(splitData[j++],base));
+    flex_rr.push(parseInt(splitData[j++],base));
+    flex_rl.push(parseInt(splitData[j++],base));
+    gyro_x.push(parseInt(splitData[j++],base));
+    gyro_y.push(parseInt(splitData[j++],base));
+    gyro_z.push(parseInt(splitData[j++],base));
+    light.push(parseInt(splitData[j++],base));
 
   }
-});
-function SaveResponse(splitData){
-  id = splitData[0];
-  time = splitData[1], 
-  temperature = splitData[2], 
-  humidity = splitData[3], 
-  flex_fr = splitData[4], 
-  flex_fl = splitData[5], 
-  flex_rr = splitData[6], 
-  flex_rl = splitData[7],
-  gyro_x = splitData[8], 
-  gyro_y = splitData[9], 
-  gyro_z = splitData[10], 
-  light = splitData[11];
+  id.reverse();
+  time.reverse();
+  temperature.reverse();
+  humidity.reverse();
+  flex_fr.reverse();
+  flex_fl.reverse();
+  flex_rr.reverse();
+  flex_rl.reverse();
+  gyro_x.reverse();
+  gyro_y.reverse();
+  gyro_z.reverse();
+  light.reverse();
 
 }
 /*#######################
@@ -39,20 +65,23 @@ var intX = 1900;
 var intY = 910;
 var screen;
 
-if (canvas.getContext){
-  screen = canvas.getContext('2d');
-  Background();
-  Title();
-
-  Flex(0,60);
-  Thermometer(0,380);
-  Light(0,660);
-  IMU(770,60);
-  DateTime(770,880);
-
-
-} else {
- alert("Your browser doesn't support canvas.");
+function RefreshWindow(){
+  if (canvas.getContext){
+    screen = canvas.getContext('2d');
+    Background();
+    Title();
+  
+    Flex(0,60);
+    THSensor(0,380);
+    Light(0,660);
+    IMU(770,60);
+    DateTime(770,880);
+    console.log(id[0]);
+  
+  } else {
+   alert("Your browser doesn't support canvas.");
+  }
+  
 }
 
 function Title(){
@@ -61,7 +90,7 @@ function Title(){
   screen.fillText("Telemetry2020 - by Aaron Perez Ontiveros",450,50);
 }
 function Background(){
-  screen.fillStyle = "#3E3AFF";
+  screen.fillStyle = "#141414";
   screen.fillRect(0,60,intX,intY);
   screen.strokeRect(0,0,intX,intY);
 }
@@ -73,39 +102,33 @@ function BackgroundSensors(x,y,width,height){
 function Flex(posX,posY){
   BackgroundSensors(posX,posY,770,320);
 }
-function Thermometer(posX, posY){
+function THSensor(posX, posY){
   BackgroundSensors(posX,posY,770,280);
   screen.fillStyle = "#FFF";
   screen.font = "40px Arial";
-  screen.fillText(temperature+"°C",posX+650,posY+80);
-  screen.fillText(humidity+"%",posX+650,posY+200);
-  var THGraph = document.getElementById('THGraph');
-  
-  if (THGraph.getContext){
+  screen.fillText(temperature[49]+"°C",posX+650,posY+80);
+  screen.fillText(humidity[49]+"%",posX+650,posY+200);
+
+  var TemperatureGraph = document.getElementById('TemperatureGraph');
+  if (TemperatureGraph.getContext){
     screen = canvas.getContext('2d');
     Chart.defaults.global.defaultFontFamily = "Lato";
     Chart.defaults.global.defaultFontSize = 18;
-    var dataFirst = {
-        label: "Car A - Speed (mph)",
-        data: [0, 59, 75, 20, 20, 55, 40],
+    var termo = {
+        label: "Temperature",
+        data: temperature,
         lineTension: 0,
         fill: false,
         borderColor: 'red'
       };
-    
-    var dataSecond = {
-        label: "Car B - Speed (mph)",
-        data: [20, 15, 60, 60, 65, 30, 70],
-        lineTension: 0,
-        fill: false,
-      borderColor: 'blue'
-      };
-    
-    var speedData = {
-      labels: ["0s", "10s", "20s", "30s", "40s", "50s", "60s"],
-      datasets: [dataFirst, dataSecond]
+    var constant = {
+      labels: temperature,
+      datasets: [termo]
     };
     var chartOptions = {
+      animation: { duration: 0 },
+      position: "left",
+
       maintainAspectRation: false,
       legend: {
         display: true,
@@ -113,80 +136,164 @@ function Thermometer(posX, posY){
         position: 'top',
         labels: {
           boxWidth: 2,
-          fontColor: 'black'
+          fontColor: 'white'
         }
       }
     };
-    var lineChart = new Chart(THGraph, {
+    var lineChart = new Chart(TemperatureGraph, {
       type: 'line',
-      data: speedData,
+      data: constant,
       options: chartOptions
+      
     });
   }
   else{
 
-    console.log("THGraph couldn't appear.");
+    console.log("TemperatureGraph couldn't appear.");
   }
+
+  var HumidityGraph = document.getElementById('HumidityGraph');
+  if (HumidityGraph.getContext){
+    screen = canvas.getContext('2d');
+    Chart.defaults.global.defaultFontFamily = "Lato";
+    Chart.defaults.global.defaultFontSize = 18;
+    var temp = {
+        label: "Humidity",
+        data: humidity,
+        lineTension: 0,
+        fill: false,
+        borderColor: 'red'
+      };
+    var constant = {
+      labels: humidity,
+      datasets: [temp]
+    };
+    var chartOptions = {
+      animation: { duration: 0 },
+
+      maintainAspectRation: false,
+      legend: {
+        display: true,
+        responsive: true,
+        position: 'top',
+        labels: {
+          boxWidth: 2,
+          fontColor: 'white'
+        }
+      }
+    };
+    var lineChart = new Chart(HumidityGraph, {
+      type: 'line',
+      data: constant,
+      options: chartOptions
+    });
+  }
+  else{
+    console.log("Humidity couldn't appear.");
+  }
+
  
 }
 function Light(posX,posY){
   BackgroundSensors(posX,posY,240,249);
 
 }
+xAxis = new Array(50);
+for(var i = 0; i<50;i++){
+  xAxis[i]=i+1;
+}
 function IMU(posX,posY){
   BackgroundSensors(posX,posY,1130,320);
-  IMUPitch(posX,posY);
-  IMURoll(posX,posY);
-  IMUYaw(posX,posY);
+  var today = new Date();
+  var dd = String(today.getDate()).padStart(2, '0');
+  var mm = String(today.getMonth()).padStart(2, '0'); //January is 0!
+  var yyyy = String(today.getFullYear())
+  var hour = String(today.getHours())
+  var minutes = String(today.getMinutes())
+  var seconds = String(today.getSeconds())
+
+  var IMUGraph = document.getElementById('IMUGraph');
+
+  if (IMUGraph.getContext){
+    screen = canvas.getContext('2d');
+    Chart.defaults.global.defaultFontFamily = "Lato";
+    Chart.defaults.global.defaultFontSize = 18;
+    var roll = {
+        label: "Roll",
+        data: gyro_x,
+        lineTension: 0,
+        fill: false,
+        borderColor: 'red'
+      };
+    var pitch = {
+      label: "Pitch",
+      data: gyro_y,
+      lineTension: 0,
+      fill: false,
+      borderColor: 'green'
+    };
+    var yaw = {
+      label: "Yaw",
+      data: gyro_z,
+      lineTension: 0,
+      fill: false,
+      borderColor: 'blue'
+    };
+    var constant = {
+      labels: xAxis,
+      datasets: [roll,pitch,yaw]
+    };
+    var chartOptions = {
+      animation: { duration: 0 },
+      maintainAspectRation: false,
+      legend: {
+        display: true,
+        responsive: true,
+        position: 'top',
+        labels: {
+          boxWidth: 2,
+          fontColor: 'white'
+        }
+      }
+    };
+    var lineChart = new Chart(IMUGraph, {
+      type: 'line',
+      data: constant,
+      options: chartOptions
+    });
+  }
+  else{
+    console.log("Humidity couldn't appear.");
+  }
+
+
+
+  IMUPitch(gyro_x[49]);
+  IMURoll(gyro_y[49]);
+  IMUYaw(gyro_z[49]);
 
 }
 function DateTime(posX,posY){
   BackgroundSensors(posX,posY,1130,30);
-  screen.fillStyle = "#FFF";
+  screen.fillStyle = "#000";
   screen.font = "25px Arial";
   screen.fillText(time,posX+450,posY+25);
 }
-function IMURoll(posX, posY){
-  var roll = new Image;
-  // var measure = 40;
-  roll.src = './images/roll.png';
-
-  var back = new Image;
-  back.src = './images/IMUBackground.png';
-  
-  roll.onload = function(){
-    screen.drawImage(roll, posX+30+1000, posY+28,90,45);
-    screen.drawImage(back, posX+1020, posY,110,110);
-  }
+function IMURoll(angle){
+  $(document).ready(function(){
+    $("#Roll").rotate(angle)
+  });
 }
-function IMUPitch(posX, posY){
-  var pitch = new Image;
-  // var measure = 40;
-  pitch.src = './images/pitch.png';
-
-  var back = new Image;
-  back.src = './images/IMUBackground.png';
-
-  pitch.onload = function(){
-    screen.drawImage(pitch, posX+1025, posY+85+60,98,25);
-    screen.drawImage(back, posX+1020, posY+105,110,110);
-  }
- 
+function IMUPitch(angle){
+  $(document).ready(function(){
+    $("#Pitch").rotate(angle)
+  });
 }
-function IMUYaw(posX, posY){
-  var yaw = new Image;
-  // var measure = 40;
-  yaw.src = './images/yaw.png';
+function IMUYaw(angle){
+  $(document).ready(function(){
+    $("#Yaw").rotate(angle)
+  });
 
-  var back = new Image;
-  back.src = './images/IMUBackground.png';
-
-  yaw.onload = function(){
-    //rotate(10 * Math.PI / 180);
-    screen.drawImage(yaw, posX+67+986, posY+23+200,45,86);
-    screen.drawImage(back, posX+1020, posY+210,110,110);
-
-  }
 }
 
 
