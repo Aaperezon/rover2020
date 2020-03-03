@@ -1,0 +1,34 @@
+"""
+Comandos para crear la BD de rover 2020 con la tabla que se va a usar.
+"""
+
+CREATE DATABASE rover2020;
+USE rover2020;
+
+CREATE TABLE reading (
+	id int not null auto_increment,
+	time timestamp, 
+	temperature double not null,
+	humidity double not null,
+	flex double not null,
+	vibration_fl int not null,
+	vibration_fr int not null,
+	vibration_rl int not null,
+	vibration_rr int not null,
+	gyro_pitch double not null,
+	gyro_roll double not null,
+	gyro_yaw double not null,
+	bpm_1 double not null,
+	bpm_2 double not null,
+	rpm double not null,
+	battery double not null,
+	gps_latitude double not null,
+	gps_longitude double not null,
+	gps_altitude double not null,
+	steer double not null,
+	
+	primary key(id)
+);
+
+
+select * from reading;

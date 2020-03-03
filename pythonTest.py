@@ -15,3 +15,5 @@ def Send():
 while True: 
     Send()
     time.sleep(1)
+
+    http://localhost/rover/services/Create.php/?temperature=32&humidity=32&flex_fr=30&flex_fl=30&flex_rr=30&flex_rl=30&gyro_x=32&gyro_y=32&gyro_z=32&light=40

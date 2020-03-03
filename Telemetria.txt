@@ -1,24 +1,23 @@
 ==========================
-EXTRA
-==========================
-
-Speed
-Gear
-Steering angle
-Break pressure
-
-
-
-
-==========================
 ACTUAL
 ==========================
+TEMPERATURE-Int
+Humidity-Int
+PITCH-int
+YAW-int
+ROLL-int
+RPM-int
+BPM 1-int
+BPM 2-int
+% BateriaRestante-int
+GPS-float
+FLEX ?-int
+SteeringDirection- +-
 
-Pitch
-Roll
-Yaw
-Camera
-Temperature
-Humidity
-Light sensibility 
-Flexing points
+
+=======================
+GPS offline
+Tacometer representation
+Interface Design
+Write on lopy's SDCard
+
