@@ -110,7 +110,7 @@ function TemperatureData(){
 
   if (temperatureData.getContext){
     var screen = temperatureData.getContext('2d');
-    screen.fillStyle = "#000";
+    screen.fillStyle = "#FFF";
     screen.font = "40px Georgia";
     screen.fillText(String(temperature[49])+" °C",0,90);
   } else {
@@ -123,7 +123,7 @@ function HumidityData(){
 
   if (humidityData.getContext){
     var screen = humidityData.getContext('2d');
-    screen.fillStyle = "#000";
+    screen.fillStyle = "#FFF";
     screen.font = "40px Georgia";
     screen.fillText(String(humidity[49])+" %",0,90);
   } else {
@@ -135,7 +135,7 @@ function RPMData(){
 
   if (RPMData.getContext){
     var screen = RPMData.getContext('2d');
-    screen.fillStyle = "#000";
+    screen.fillStyle = "#FFF";
     screen.font = "40px Georgia";
     screen.fillText(String(rpm[49])+" Km/h",0,90);
   } else {
@@ -147,7 +147,7 @@ function HR1Data(){
 
   if (HR1Data.getContext){
     var screen = HR1Data.getContext('2d');
-    screen.fillStyle = "#000";
+    screen.fillStyle = "#FFF";
     screen.font = "40px Georgia";
     screen.fillText(String(bpm_1[49])+" BPM",0,90);
   } else {
@@ -159,7 +159,7 @@ function HR2Data(){
 
   if (HR2Data.getContext){
     var screen = HR2Data.getContext('2d');
-    screen.fillStyle = "#000";
+    screen.fillStyle = "#FFF";
     screen.font = "40px Georgia";
     screen.fillText(String(bpm_2[49])+" BPM",0,90);
   } else {
@@ -176,7 +176,7 @@ function THSensor(){
   if (temperatureGraph.getContext){
     var screen = temperatureGraph.getContext('2d');
     Chart.defaults.global.defaultFontFamily = "Lato";
-    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontSize = 20;
 
     var termo = {
         label: "Temperature",
@@ -200,7 +200,7 @@ function THSensor(){
         position: 'top',
         labels: {
           boxWidth: 2,
-          fontColor: 'black'
+          fontColor: 'white'
         }
       }
     };
@@ -219,7 +219,7 @@ function THSensor(){
   if (humidityGraph.getContext){
     var screen = humidityGraph.getContext('2d');
     Chart.defaults.global.defaultFontFamily = "Lato";
-    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontSize = 20;
     var temp = {
         label: "Humidity",
         data: humidity,
@@ -241,7 +241,7 @@ function THSensor(){
         position: 'top',
         labels: {
           boxWidth: 2,
-          fontColor: 'black'
+          fontColor: 'white'
         }
       }
     };
@@ -268,7 +268,7 @@ function IMU(){
   if (IMUGraph.getContext){
     screen = IMUGraph.getContext('2d');
     Chart.defaults.global.defaultFontFamily = "Lato";
-    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontSize = 20;
     var roll = {
         label: "Roll",
         data: gyro_roll,
@@ -303,7 +303,7 @@ function IMU(){
         position: 'top',
         labels: {
           boxWidth: 2,
-          fontColor: 'black'
+          fontColor: 'white'
         }
       }
     };
@@ -331,7 +331,7 @@ function HR1(){
   if (HR1.getContext){
     screen = HR1.getContext('2d');
     Chart.defaults.global.defaultFontFamily = "Lato";
-    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontSize = 20;
     var hr = {
         label: "Heart Rate Pilot#1",
         data: bpm_1,
@@ -352,7 +352,7 @@ function HR1(){
         position: 'top',
         labels: {
           boxWidth: 2,
-          fontColor: 'black'
+          fontColor: 'white'
         }
       }
     };
@@ -372,7 +372,7 @@ function HR2(){
   if (HR2.getContext){
     screen = HR2.getContext('2d');
     Chart.defaults.global.defaultFontFamily = "Lato";
-    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontSize = 20;
     var hr = {
         label: "Heart Rate Pilot#2",
         data: bpm_2,
@@ -393,7 +393,7 @@ function HR2(){
         position: 'top',
         labels: {
           boxWidth: 2,
-          fontColor: 'black'
+          fontColor: 'white'
         }
       }
     };
@@ -414,7 +414,7 @@ function RPM(){
   if (RPM.getContext){
     screen = RPM.getContext('2d');
     Chart.defaults.global.defaultFontFamily = "Lato";
-    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontSize = 20;
     var hr = {
         label: "Km/h",
         data: rpm,
@@ -435,7 +435,7 @@ function RPM(){
         position: 'top',
         labels: {
           boxWidth: 2,
-          fontColor: 'black'
+          fontColor: 'white'
         }
       }
     };
@@ -463,14 +463,13 @@ function DateTime(){
   var dateTime = document.getElementById('DateTime');
   if (dateTime.getContext){
     var screen = dateTime.getContext('2d');
-    screen.rect(0,0,500,500);
-    screen.fillStyle = "white";
-    screen.fill();
-
-    screen.fillStyle = "#000";
+    
+    screen.clearRect ( 0 , 0 , 500 , 500 );
+    screen.fillStyle = "#FFF";
     screen.font = "30px Georgia";
     screen.fillText(dd+"/"+mm+"/"+yyyy,100,90);
     screen.fillText(hour+":"+minutes+":"+seconds,100,120);
+
   } else {
    alert("Your browser doesn't support canvas.");
   }
@@ -494,6 +493,7 @@ function IMUYaw(angle){
 }
 
 function Protocols(){
+  /*
   var c = document.getElementById('PROTOCOLS');
   var ctx = c.getContext("2d");
   ctx.beginPath();
@@ -501,22 +501,20 @@ function Protocols(){
   ctx.strokeStyle = "blue";
   ctx.rect(50, 50, 150, 80);
   ctx.stroke();
+  */
 }
 var i = 0;
+var map = new ol.Map();
+map.setTarget('GPS');
+map.setLayerGroup(new ol.layer.Tile({source: new ol.source.OSM()}));
 function GPS(){
-  i+=.0000003;
-  var map = new ol.Map({
-    target: 'GPS',
-    layers: [
-      new ol.layer.Tile({
-        source: new ol.source.OSM()
-      })
-    ],
-    view: new ol.View({
-      center: ol.proj.fromLonLat([-99.22314949999999+i, 18.804766+i]),
-      zoom: 16
-    })
-  });
+  i+=.0001
+  
+  map.setView(new ol.View({center: ol.proj.fromLonLat([-99.22314949999999+i, 18.804766+i]),zoom: 16}));
+  map.render();
+
+
+
 }
 
 

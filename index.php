@@ -16,6 +16,7 @@
         <script src="./libs/js/highcharts.js"> </script>
         <script src="./libs/js/ol.js"> </script>
         <script src="./libs/js/ol.js.map"> </script>
+        <script src="./libs/js/arcgis.js"> </script>
         <!-- 
             <meta http-equiv="refresh" content=".1">  
         -->
@@ -23,11 +24,11 @@
     
     </head> 
 
-    <body>
+    <body style="background-color:#000000;">
 
     <canvas id="interface" width="0" height="0"></canvas>
 
-    <div class = "container-fluid" style>
+    <div class = "container-fluid" >
             <div class="row" >
                 <div class="col-4">
                     <canvas id="TemperatureGraph"  width="700" height="150"></canvas>
@@ -74,18 +75,20 @@
                     <canvas id="IMUGraph" width="500" height="150"></canvas>
 
                 </div>
-                <div class="col-4">
+                <div class="col-3">
                     Suspension animation
                 </div>
-                <div class="col-4">
+                <div class="col-5">
                     GPS
-                    <div style="width:100%; height:150px" id="GPS"></div>
+                    <div class = "gpsContainer"id="GPS"></div>
                 </div>
             </div>
            
             <div class="row">
-                <div class="col-4">
-                <canvas id="DateTime"></canvas>
+                <div class="col-3">
+                    <img class = "nasaLogoContainer" src="./images/nasaLogo" alt="">
+                
+                    <canvas id="DateTime"></canvas>
 
                 </div>
                 <div class="col-4">
@@ -95,9 +98,9 @@
                 <canvas id="RPMData" width="500" height="150"></canvas>
 
                 </div>
-                <div class="col-3">
+                <div class="col-4">
                 <canvas id="PROTOCOLS"></canvas>
-
+                    <img class = "logoContainer" src="./images/logo" alt="logo">
                 </div>
             </div>
 
