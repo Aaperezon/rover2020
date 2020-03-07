@@ -30,41 +30,41 @@
 
     <div class = "container-fluid" >
             <div class="row" >
-                <div class="col-4">
+                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     <canvas id="TemperatureGraph"  width="700" height="150"></canvas>
                 </div>
-                <div class="col-1">
+                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     <canvas id="TemperatureData"  width="700" height="150"></canvas>
                 </div>
-                <div class="col-2">
+                <div class="col-2" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     Battery life
                 </div>
-                <div class="col-4">
+                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     <canvas id="HR1" width="700" height="150"></canvas>
                 </div>
-                <div class="col-1">
+                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     <canvas id="HR1Data"></canvas>
                 </div>
             </div>
             <div class="row">
-                <div class="col-4">
+                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     <canvas id="HumidityGraph" width="700" height="150"></canvas>
                 </div>
-                <div class="col-1">
+                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     <canvas id="HumidityData" width="700" height="150"></canvas>
                 </div>
-                <div class="col-2">
+                <div class="col-2" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     Steering Wheel
                 </div>
-                <div class="col-4">
+                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     <canvas id="HR2" width="700" height="150"></canvas>
                 </div>
-                <div class="col-1">
+                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     <canvas id="HR2Data"></canvas>
                 </div>
             </div>
             <div class="row">
-                <div class="col-4">
+                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     <img class = "PitchBackContainer" src="./images/IMUBackgroundPitch" alt="Pitch">
                     <img class = "RollBackContainer" src="./images/IMUBackgroundRoll" alt="Roll">
                     <img class = "YawBackContainer" src="./images/IMUBackgroundYaw" alt="Yaw">
@@ -75,32 +75,43 @@
                     <canvas id="IMUGraph" width="500" height="150"></canvas>
 
                 </div>
-                <div class="col-3">
+                <div class="col-3" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     Suspension animation
                 </div>
-                <div class="col-5">
-                    GPS
+                <div class="col-5" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     <div class = "gpsContainer"id="GPS"></div>
                 </div>
             </div>
            
             <div class="row">
-                <div class="col-3">
+                <div class="col-3" >
                     <img class = "nasaLogoContainer" src="./images/nasaLogo" alt="">
                 
-                    <canvas id="DateTime"></canvas>
-
                 </div>
-                <div class="col-4">
+                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                     <canvas id="RPM" width="500" height="150"></canvas>
                 </div>
-                <div class="col-1">
+                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
                 <canvas id="RPMData" width="500" height="150"></canvas>
 
                 </div>
-                <div class="col-4">
+                <div class="col-4" >
                 <canvas id="PROTOCOLS"></canvas>
                     <img class = "logoContainer" src="./images/logo" alt="logo">
+                </div>
+            </div>
+
+
+            <div class="row">
+                <div class="col-4" >
+                </div>
+                <div class="col-2" >
+                    <canvas class="dateContainer"id="Date"></canvas>
+                </div>
+                <div class="col-2" >
+                    <canvas class="timeContainer"id="Time"></canvas>
+                </div>
+                <div class="col-4" >
                 </div>
             </div>
 

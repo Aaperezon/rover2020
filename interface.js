@@ -85,7 +85,8 @@ function RefreshWindow(){
     HumidityData();
     THSensor();
     IMU();
-    DateTime();
+    DateToday();
+    Time();
     HR1();
     HR1Data();
     HR2Data();
@@ -136,7 +137,7 @@ function RPMData(){
   if (RPMData.getContext){
     var screen = RPMData.getContext('2d');
     screen.fillStyle = "#FFF";
-    screen.font = "40px Georgia";
+    screen.font = "30px Georgia";
     screen.fillText(String(rpm[49])+" Km/h",0,90);
   } else {
    alert("Your browser doesn't support canvas.");
@@ -451,28 +452,41 @@ function RPM(){
 }
 
 
-
-function DateTime(){
-  var today = new Date();
+var today = new Date();
+function DateToday(){
   var dd = String(today.getDate()).padStart(2, '0');
   var mm = String(today.getMonth()).padStart(2, '0'); //January is 0!
   var yyyy = String(today.getFullYear())
+  var dateTime = document.getElementById('Date');
+  if (dateTime.getContext){
+    var screen = dateTime.getContext('2d');
+    screen.clearRect ( 0 , 0 , 500 , 500 );
+    screen.fillStyle = "#FFF";
+    screen.font = "30px Georgia";
+    screen.fillText(dd+"/"+mm+"/"+yyyy,70,40);
+
+  } else {
+   alert("Your browser doesn't support canvas.");
+  }
+}
+function Time(){
   var hour = String(today.getHours())
   var minutes = String(today.getMinutes())
   var seconds = String(today.getSeconds())
-  var dateTime = document.getElementById('DateTime');
+  var dateTime = document.getElementById('Time');
   if (dateTime.getContext){
     var screen = dateTime.getContext('2d');
     
     screen.clearRect ( 0 , 0 , 500 , 500 );
     screen.fillStyle = "#FFF";
     screen.font = "30px Georgia";
-    screen.fillText(dd+"/"+mm+"/"+yyyy,100,90);
-    screen.fillText(hour+":"+minutes+":"+seconds,100,120);
+    screen.fillText(hour+":"+minutes+":"+seconds,70,40);
 
   } else {
    alert("Your browser doesn't support canvas.");
   }
+
+
 }
 
 function IMURoll(angle){
