@@ -17,16 +17,29 @@ CREATE TABLE reading (
 	vibration_rr int not null,
 	gyro_pitch double not null,
 	gyro_roll double not null,
-	gyro_yaw double not null,
+	gravity double not null,
 	bpm_1 double not null,
 	bpm_2 double not null,
 	rpm double not null,
 	battery double not null,
 	gps_latitude double not null,
 	gps_longitude double not null,
-	gps_altitude double not null,
 	steer double not null,
-	
+	gasOH double not null,
+	gasCO double not null,
+	gasOHAlert boolean,
+	gasCOAlert boolean,
+	task1 boolean,
+	task2 boolean,
+	task3 boolean,
+	task4 boolean,
+	task5 boolean,
+	NHP boolean,
+	CEP boolean,
+	BCP boolean,
+	APP boolean,
+	LCP boolean,
+
 	primary key(id)
 );
 

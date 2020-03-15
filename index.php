@@ -17,6 +17,9 @@
         <script src="./libs/js/ol.js"> </script>
         <script src="./libs/js/ol.js.map"> </script>
         <script src="./libs/js/arcgis.js"> </script>
+        <!--<script src="./libs/js/google_maps.js?callback=initMap"></script> -->
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAbsKOXBsE4l2oSxbqT5U_0nxQSlxtaWY&callback=initMap"></script>
+
         <!-- 
             <meta http-equiv="refresh" content=".1">  
         -->
@@ -26,77 +29,85 @@
 
     <body style="background-color:#000000;">
 
-    <canvas id="interface" width="0" height="0"></canvas>
 
     <div class = "container-fluid" >
             <div class="row" >
-                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
+                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
                     <canvas id="TemperatureGraph"  width="700" height="150"></canvas>
                 </div>
-                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
+                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
                     <canvas id="TemperatureData"  width="700" height="150"></canvas>
                 </div>
-                <div class="col-2" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
-                    Battery life
+                <div class="col-2" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
+                    <canvas class = "BatteryContainer" id="Battery" ></canvas>
+
                 </div>
-                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
+                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
                     <canvas id="HR1" width="700" height="150"></canvas>
                 </div>
-                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
+                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
                     <canvas id="HR1Data"></canvas>
                 </div>
             </div>
             <div class="row">
-                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
+                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
                     <canvas id="HumidityGraph" width="700" height="150"></canvas>
                 </div>
-                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
+                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
                     <canvas id="HumidityData" width="700" height="150"></canvas>
                 </div>
-                <div class="col-2" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
-                    Steering Wheel
+                <div class="col-2" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
+                    <img class = "SteeringWheelContainer" id="SteeringWheel" src="./images/steeringWheel" alt="steeringWheel">
                 </div>
-                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
+                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
                     <canvas id="HR2" width="700" height="150"></canvas>
                 </div>
-                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
+                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
                     <canvas id="HR2Data"></canvas>
                 </div>
             </div>
             <div class="row">
-                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
+                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
+                    <canvas class = "GravityContainer" id="IMUGravity"></canvas>
+                    <img class = "GravityContainerImg"  src="./images/gravity" alt="gravityImage">
+
                     <img class = "PitchBackContainer" src="./images/IMUBackgroundPitch" alt="Pitch">
                     <img class = "RollBackContainer" src="./images/IMUBackgroundRoll" alt="Roll">
-                    <img class = "YawBackContainer" src="./images/IMUBackgroundYaw" alt="Yaw">
                     <img class = "PitchContainer" id = "Pitch"  src="./images/pitch" alt="Pitch">
                     <img class = "RollContainer" id = "Roll"  src="./images/roll" alt="Roll">
-                    <img class = "YawContainer" id = "Yaw"  src="./images/yaw" alt="Yaw">
+
                     <br><br><br><br><br><br>
                     <canvas id="IMUGraph" width="500" height="150"></canvas>
 
                 </div>
-                <div class="col-3" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
-                    Suspension animation
+                <div class="col-3" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
+                    <img class = "RoverContainer"  src="./images/auto" alt="Rover">
+                    <img class = "RoverFL" id="FL"  src="./images/ouch" alt="Rover">
+                    <img class = "RoverFR" id="FR" src="./images/ouch" alt="Rover">
+                    <img class = "RoverRL" id="RL" src="./images/ouch" alt="Rover">
+                    <img class = "RoverRR" id="RR" src="./images/ouch" alt="Rover">
                 </div>
-                <div class="col-5" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
+                <div class="col-5" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
                     <div class = "gpsContainer"id="GPS"></div>
                 </div>
             </div>
            
             <div class="row">
-                <div class="col-3" >
+                <div class="col-2" >
                     <img class = "nasaLogoContainer" src="./images/nasaLogo" alt="">
                 
                 </div>
-                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
+                <div class="col-4" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
                     <canvas id="RPM" width="500" height="150"></canvas>
                 </div>
-                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:2px;">
-                <canvas id="RPMData" width="500" height="150"></canvas>
+                <div class="col-1" style="border-color:#FFFFFF; border-style:solid; border-width:1px;">
+                    <canvas id="RPMData" width="500" height="150"></canvas>
 
                 </div>
-                <div class="col-4" >
-                <canvas id="PROTOCOLS"></canvas>
+                <div class="col-3" >
+                    <canvas class="protocolContainer" id="Protocols"></canvas>
+                </div>
+                <div class="col-2" >
                     <img class = "logoContainer" src="./images/logo" alt="logo">
                 </div>
             </div>
@@ -138,8 +149,8 @@
         -->
 
         <!--
-        localhost/rover/services/Create.php/?temperature=30&humidity=30&flex=30&vibration_fl=30&vibration_fr=30&vibration_rl=30&vibration_rr=30&gyro_pitch=30&gyro_roll=30&gyro_yaw=30&bpm_1=30&bpm_2=30&rpm=30&battery=30&gps_latitude=30&gps_longitude=30&gps_altitude=30&steer=30
-
+        localhost/rover/services/Create.php/?temperature=30&humidity=30&flex=30&vibration_fl=30&vibration_fr=30&vibration_rl=30&vibration_rr=30&gyro_pitch=30&gyro_roll=30&gravity=30&bpm_1=30&bpm_2=30&rpm=30&battery=30&gps_latitude=30&gps_longitude=30&gps_altitude=30&steer=30&gasOH=30&gasCO=30&gasOHAlert=1&gasCOAlert=0&task1=0&task2=0&task3=0&task4=1&task5=1&NHP=1&CEP=0&BCP=0&APP=0&LCP=0
+        http://localhost/rover/services/Create.php/?temperature=30&humidity=30&flex=1&vibration_fl=0&vibration_fr=0&vibration_rl=1&vibration_rr=0&gyro_pitch=30&gyro_roll=30&gravity=30&bpm_1=30&bpm_2=30&rpm=30&battery=30&gps_latitude=30&gps_longitude=30&gps_altitude=30&steer=30&gasOH=30&gasCO=30&gasOHAlert=1&gasCOAlert=0&task1=0&task2=0&task3=0&task4=1&task5=1&NHP=1&CEP=0&BCP=0&APP=0&LCP=0
         
         localhost/rover/?id=8
         -->
@@ -148,3 +159,4 @@
     </body>
 
 </html>
+

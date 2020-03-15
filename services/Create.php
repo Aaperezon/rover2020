@@ -4,7 +4,8 @@ $bindings = [];
 $result=null;
 if($pdo!=null){
     error_log("Connection is not null");
-    $parameters = ['temperature', 'humidity', 'flex','vibration_fl','vibration_fr','vibration_rl','vibration_rr', 'gyro_pitch','gyro_roll','gyro_yaw','bpm_1','bpm_2','rpm', 'battery', 'gps_latitude', 'gps_longitude', 'gps_altitude', 'steer'];
+    $parameters = ['temperature', 'humidity', 'flex','vibration_fl','vibration_fr','vibration_rl','vibration_rr', 'gyro_pitch','gyro_roll','gravity','bpm_1','bpm_2','rpm', 'battery', 'gps_latitude', 'gps_longitude', 'steer', 'gasOH', 'gasCO', 'gasOHAlert', 'gasCOAlert', 'task1', 'task2', 'task3', 'task4', 'task5', 'NHP', 'CEP', 'BCP', 'APP', 'LCP'];
+
     for($i = 0; $i < sizeof($parameters); $i++){
         if(!isset($_GET[$parameters[$i]])){
             $result = "Parameter ".$parameters[$i]." missing";
@@ -15,8 +16,8 @@ if($pdo!=null){
         }
     }
     if($result==null){
-        $sql = 'INSERT INTO reading( time, temperature, humidity, flex, vibration_fl, vibration_fr, vibration_rl, vibration_rr, gyro_pitch, gyro_roll, gyro_yaw, bpm_1, bpm_2, rpm, battery, gps_latitude, gps_longitude, gps_altitude, steer)
-        VALUES (CURRENT_TIMESTAMP,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+        $sql = 'INSERT INTO reading( time, temperature, humidity, flex, vibration_fl, vibration_fr, vibration_rl, vibration_rr, gyro_pitch, gyro_roll, gravity, bpm_1, bpm_2, rpm, battery, gps_latitude, gps_longitude, steer, gasOH, gasCO, gasOHAlert, gasCOAlert, task1, task2, task3, task4, task5, NHP, CEP, BCP, APP, LCP)
+        VALUES (CURRENT_TIMESTAMP,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
         $stmt = $pdo->prepare($sql);
         if($stmt->execute($bindings)){
             $result = "Insertion Success";
