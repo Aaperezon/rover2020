@@ -18,7 +18,7 @@
         <script src="./libs/js/ol.js.map"> </script>
         <script src="./libs/js/arcgis.js"> </script>
         <!--<script src="./libs/js/google_maps.js?callback=initMap"></script> -->
-        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDAbsKOXBsE4l2oSxbqT5U_0nxQSlxtaWY&callback=initMap"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=KEY&callback=initMap"></script>
 
         <!-- 
             <meta http-equiv="refresh" content=".1">  
